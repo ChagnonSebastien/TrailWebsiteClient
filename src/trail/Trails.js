@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Route, Link } from "react-router-dom";
 import { MDBBreadcrumb, MDBBreadcrumbItem, MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBIcon } from 'mdbreact';
+import AppalachianTrail from "./AppalachianTrail";
 
 class Trails extends React.Component {
   constructor(props) {
@@ -41,13 +42,7 @@ class Trails extends React.Component {
               </MDBRow>
             </Fragment>
         )}/>
-        <Route path={`${this.props.match.path}/at`} render={routeProps => (
-          <MDBBreadcrumb>
-            <MDBBreadcrumbItem><Link to="/">Home</Link></MDBBreadcrumbItem>
-            <MDBBreadcrumbItem><Link to="/trails">Trails</Link></MDBBreadcrumbItem>
-            <MDBBreadcrumbItem active>Appalachian Trail</MDBBreadcrumbItem>
-          </MDBBreadcrumb>
-        )}/>
+        <Route path={`${this.props.match.path}/at`} component={AppalachianTrail} />
       </Fragment>
     );
   }
