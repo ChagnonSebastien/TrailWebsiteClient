@@ -3,11 +3,20 @@ import { Link } from "react-router-dom";
 import { MDBBreadcrumb, MDBBreadcrumbItem } from "mdbreact"
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
+import { get } from "axios";
 
 class AppalachianTrail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {points: []};
+
+    get(
+      "https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/0ZPQrxaNARHHAgXDdMAZ2nIu74I7a2ie9/message.json"
+    ).then((response) => {
+      this.setState({points: response.data.response.feedMessageResponse.messages.message.sort((p1, p2) => {
+        return (p1.messageType === "OK" ? 1 : 0) - (p2.messageType === "OK" ? 1 : 0);
+      })});
+    });
   }
 
   render() {
@@ -25,8 +34,7 @@ class AppalachianTrail extends React.Component {
             defaultZoom={5}
             defaultCenter={{ lat: 40, lng: -76 }}
           >
-            <Marker lat={40} lng={-76} stop />
-            <Marker lat={41} lng={-75} />
+            {this.state.points.map( (point) => <Marker key={point.id} lat={point.latitude} lng={point.longitude} stop={point.messageType === "OK"} /> )}
           </GoogleMapReact>
 
         </div>
