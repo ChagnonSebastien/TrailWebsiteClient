@@ -74,8 +74,8 @@ class DoubleNavigationPage extends React.Component {
             <MDBSideNavLink topLevel to="/" exact>
               <MDBIcon icon="home" className="mr-2" /> Home
             </MDBSideNavLink>
-            <MDBSideNavLink topLevel to="/trail">
-              <MDBIcon icon="mountain" className="mr-2" /> Trail
+            <MDBSideNavLink topLevel to="/trails">
+              <MDBIcon icon="mountain" className="mr-2" /> Trails
             </MDBSideNavLink>
             <MDBSideNavLink topLevel to="/contact">
               <MDBIcon icon="envelope" className="mr-2" /> Contact me

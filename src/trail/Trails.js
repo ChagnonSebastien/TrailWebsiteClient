@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Route, Link } from "react-router-dom";
 import { MDBBreadcrumb, MDBBreadcrumbItem, MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBIcon } from 'mdbreact';
 
-class Trail extends React.Component {
+class Trails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,7 +15,7 @@ class Trail extends React.Component {
             <Fragment>
               <MDBBreadcrumb>
                 <MDBBreadcrumbItem><Link to="/">Home</Link></MDBBreadcrumbItem>
-                <MDBBreadcrumbItem active>Trail</MDBBreadcrumbItem>
+                <MDBBreadcrumbItem active>Trails</MDBBreadcrumbItem>
               </MDBBreadcrumb>
 
               <MDBRow>
@@ -27,8 +27,8 @@ class Trail extends React.Component {
                       <MDBCardTitle>Appalachian Trail</MDBCardTitle>
                       <hr />
                       <MDBCardText>
-                        Some quick example text to build on the card title and make
-                        up the bulk of the card&apos;s content.
+                        Trail that follows the Appalachian Mountains from Georgia to Maine.
+                        I walked the 3600 km from the begining of May 2020 to October 2020.
                       </MDBCardText>
                       <Link to={`${this.props.match.url}/at`} className="black-text d-flex justify-content-end">
                         <h5>
@@ -44,7 +44,7 @@ class Trail extends React.Component {
         <Route path={`${this.props.match.path}/at`} render={routeProps => (
           <MDBBreadcrumb>
             <MDBBreadcrumbItem><Link to="/">Home</Link></MDBBreadcrumbItem>
-            <MDBBreadcrumbItem><Link to="/trail">Trail</Link></MDBBreadcrumbItem>
+            <MDBBreadcrumbItem><Link to="/trails">Trails</Link></MDBBreadcrumbItem>
             <MDBBreadcrumbItem active>Appalachian Trail</MDBBreadcrumbItem>
           </MDBBreadcrumb>
         )}/>
@@ -53,4 +53,4 @@ class Trail extends React.Component {
   }
 }
 
-export default Trail;
+export default Trails;
