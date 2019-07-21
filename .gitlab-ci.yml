@@ -2,13 +2,16 @@ stages:
   - test
   - build
   - deploy
-default:
-  before_script:
-    - yarn install
 build:
   stage: build
   image: "node:8-alpine"
   script:
+    - apk add openssh git
+    - eval `ssh-agent -s`
+    - chmod 600 $SSH_KEY
+    - ssh-add $SSH_KEY
+    - echo -e "Host *\n  StrictHostKeyChecking no" > /etc/ssh/ssh_config
+    - yarn install
     - yarn build
   artifacts:
     paths:
