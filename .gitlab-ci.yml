@@ -1,0 +1,16 @@
+stages:
+  - test
+  - build
+  - deploy
+default:
+  before_script:
+    - yarn install
+build:
+  stage: build
+  image: "node:8-alpine"
+  script:
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
