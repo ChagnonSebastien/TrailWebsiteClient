@@ -1,7 +1,6 @@
 stages:
-  - test
   - build
-  - deploy
+  - dockerize
 build:
   stage: build
   image: "node:8-alpine"
@@ -17,3 +16,12 @@ build:
     paths:
       - build/
     expire_in: 1 week
+dockerize:
+  stage: dockerize
+  image: "google/cloud-sdk:255.0.0"
+  script:
+    - systemctl start docker
+    - gcloud auth activate-service-account --key-file=$GCR_SA_KEY_FILE
+    - gcloud auth configure-docker
+    - docker build -t gcr.io/trailwebsite-1563630921547/trail-website/client .
+    - docker push gcr.io/trailwebsite-1563630921547/trail-website/client
